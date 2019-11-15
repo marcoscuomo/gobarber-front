@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
 
 // import { Title } from './style';
-import { Container, Form, SubmitButton } from './style';
+import { Container, Form, SubmitButton, List } from './style';
 import api from '../../services/api';
 
 // function Main() {
@@ -42,7 +42,7 @@ export default class Main extends Component {
   };
 
   render() {
-    const { newRepo, loading } = this.state;
+    const { newRepo, repositories, loading } = this.state;
     return (
       // <Title>Hello World!</Title>
       <Container>
@@ -66,6 +66,15 @@ export default class Main extends Component {
             )}
           </SubmitButton>
         </Form>
+
+        <List>
+          {repositories.map(repository => (
+            <li key={repository.name}>
+              <span>{repository.name}</span>
+              <a href="">Detalhes</a>
+            </li>
+          ))}
+        </List>
       </Container>
     );
   }
